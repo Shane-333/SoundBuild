@@ -1,0 +1,121 @@
+.workflow-journey {
+  padding: var(--space-20) 0;
+}
+
+.journey__narrative {
+  margin-bottom: var(--space-12);
+}
+
+.journey__narrative p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+.journey__narrative p:last-child {
+  margin-bottom: 0;
+}
+
+.journey__narrative strong {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.journey__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: var(--color-background);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.journey__step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.journey__step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.journey__step-label {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+.journey__step-connector {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .journey__steps {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .journey__step {
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1;
+    text-align: center;
+  }
+
+  .journey__step-connector {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: calc(50% + 30px);
+    width: calc(100% - 60px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-border));
+  }
+
+  .journey__step:last-child .journey__step-connector {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .journey__narrative {
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--space-16);
+  }
+
+  .journey__steps {
+    padding: var(--space-12) var(--space-10);
+  }
+
+  .journey__step-number {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-base);
+  }
+
+  .journey__step-connector {
+    top: 24px;
+    left: calc(50% + 34px);
+    width: calc(100% - 68px);
+  }
+}
+
