@@ -1,4 +1,5 @@
 import './Hero.css'
+import interfaceImage from '../assets/Interface.jpg'
 
 function Hero() {
   return (
@@ -13,7 +14,7 @@ function Hero() {
 Build the firm you want to run. Deliver the experience clients remember.
             </p>
             <div className="hero__actions">
-              <a href="https://your-typeform-link.typeform.com" className="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
+              <a href="https://form.typeform.com/to/HxFO5ddY" className="btn btn--primary btn--large" target="_blank" rel="noopener noreferrer">
                 Get Started
               </a>
               <a href="#how-it-works" className="btn btn--secondary btn--large">
@@ -22,9 +23,7 @@ Build the firm you want to run. Deliver the experience clients remember.
             </div>
           </div>
           <div className="hero__visual">
-            <div className="placeholder-visual hero__placeholder">
-              <span>Platform Interface Preview</span>
-            </div>
+            <img src={interfaceImage} alt="Platform Interface" className="hero__image" />
           </div>
         </div>
       </div>

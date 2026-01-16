@@ -26,7 +26,7 @@ function App() {
             <nav className="header__nav">
               <a href="#how-it-works" className="header__nav-link">How It Works</a>
               <a href="#demo" className="header__nav-link">Contact</a>
-              <a href="https://your-typeform-link.typeform.com" className="btn btn--primary header__cta" target="_blank" rel="noopener noreferrer">
+              <a href="https://form.typeform.com/to/HxFO5ddY" className="btn btn--primary header__cta" target="_blank" rel="noopener noreferrer">
                 Get Started
               </a>
             </nav>

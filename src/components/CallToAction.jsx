@@ -12,7 +12,7 @@ function CallToAction() {
             Experience the structure, clarity, and professionalism
             that defines every engagement with our team.
           </p>
-          <a href="https://your-typeform-link.typeform.com" className="btn btn--primary btn--large cta__button" target="_blank" rel="noopener noreferrer">
+          <a href="https://form.typeform.com/to/HxFO5ddY" className="btn btn--primary btn--large cta__button" target="_blank" rel="noopener noreferrer">
             Get Started
           </a>
           <p className="cta__reassurance">

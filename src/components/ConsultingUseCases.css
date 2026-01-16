@@ -41,6 +41,13 @@
   min-height: 200px;
 }
 
+.use-case__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
 @media (min-width: 768px) {
   .use-case {
     grid-template-columns: 1fr 1fr;

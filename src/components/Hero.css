@@ -47,6 +47,13 @@
   min-height: 320px;
 }
 
+.hero__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
 .hero__gradient {
   position: absolute;
   top: 0;
