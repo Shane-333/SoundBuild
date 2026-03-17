@@ -1,49 +1,54 @@
 import './ValueProposition.css'
-import { MessageSquare, ClipboardList, Zap, Sparkles } from 'lucide-react'
+import { TrendingDown, Rocket, Users, RefreshCw, Cpu } from 'lucide-react'
 
-const valueProps = [
+const outcomes = [
   {
-    icon: MessageSquare,
-    title: 'Unified Communication',
-    description: 'One place for every conversation. No scattered emails, missed messages, or duplicated threads—just clear, organized communication.'
+    icon: TrendingDown,
+    title: 'Reduce Manual Work',
+    description: 'Replace repetitive human processes with automated, reliable systems. What takes your team hours today can run without oversight.'
   },
   {
-    icon: ClipboardList,
-    title: 'Structured Process',
-    description: 'Every engagement follows clear, repeatable steps. You always know what comes next and what to expect from us.'
+    icon: Rocket,
+    title: 'Launch Faster',
+    description: 'Move from idea to production with an experienced team that has done it before. We scope accurately, build efficiently, and deliver on milestones.'
   },
   {
-    icon: Zap,
-    title: 'Efficient Collaboration',
-    description: 'Less back-and-forth, more progress. We handle the logistics so you can focus on what matters.'
+    icon: Users,
+    title: 'Improve Customer Experience',
+    description: 'Build the product your customers actually want — not a generic substitute. Custom software means you design for your users, not around a platform\'s constraints.'
   },
   {
-    icon: Sparkles,
-    title: 'A Polished Experience',
-    description: 'From your first interaction to ongoing engagement, every touchpoint is professional and seamless.'
+    icon: RefreshCw,
+    title: 'Automate Repetitive Processes',
+    description: 'AI and automation aren\'t buzzwords — they\'re practical tools. We identify where your team is doing work a system should handle and build the system.'
+  },
+  {
+    icon: Cpu,
+    title: 'Build What Off-the-Shelf Cannot',
+    description: 'Some problems require custom solutions. Specialized domain logic, unique data structures, regulatory constraints — we build where generic tools stop working.'
   }
 ]
 
 function ValueProposition() {
   return (
-    <section className="section section--alt value-proposition" id="how-it-works">
+    <section className="section section--alt outcomes" id="outcomes">
       <div className="container">
         <div className="section-header">
-          <h2>What Working With Us Looks Like</h2>
+          <h2>The Business Case for Custom Software</h2>
           <p>
-            Four pillars that define how we serve you.
+            The right custom software doesn't just solve today's problem. It creates operational advantages that compound.
           </p>
         </div>
-        <div className="value-grid">
-          {valueProps.map((prop, index) => {
-            const IconComponent = prop.icon
+        <div className="outcomes__grid">
+          {outcomes.map((outcome, index) => {
+            const IconComponent = outcome.icon
             return (
-              <div className="value-card" key={index}>
-                <div className="value-card__icon" aria-hidden="true">
-                  <IconComponent size={32} strokeWidth={1.5} />
+              <div className="outcome-card" key={index}>
+                <div className="outcome-card__icon" aria-hidden="true">
+                  <IconComponent size={28} strokeWidth={1.5} />
                 </div>
-                <h3 className="value-card__title">{prop.title}</h3>
-                <p className="value-card__description">{prop.description}</p>
+                <h3 className="outcome-card__title">{outcome.title}</h3>
+                <p className="outcome-card__description">{outcome.description}</p>
               </div>
             )
           })}
@@ -54,4 +59,3 @@ function ValueProposition() {
 }
 
 export default ValueProposition
-

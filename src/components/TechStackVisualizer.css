@@ -1,0 +1,156 @@
+/* ─────────────────────────────────────────────────────────
+   TECH STACK VISUALIZER — standalone animated component
+   ───────────────────────────────────────────────────────── */
+
+.tsv {
+  /* Fixed dimensions — do not alter */
+  position: relative;
+  width: 280px;
+  height: 380px;
+  flex-shrink: 0;
+}
+
+/* ── Central connecting line ────────────────────────────── */
+.tsv__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(74, 158, 255, 0.18) 12%,
+    rgba(74, 158, 255, 0.22) 50%,
+    rgba(74, 158, 255, 0.18) 88%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ── Travelling pulse ───────────────────────────────────── */
+.tsv__pulse {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 40px;
+  z-index: 10;
+  border-radius: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(74, 158, 255, 0.5) 20%,
+    rgba(74, 158, 255, 1)   50%,
+    rgba(74, 158, 255, 0.5) 80%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 6px  2px rgba(74, 158, 255, 0.6),
+    0 0 14px 4px rgba(74, 158, 255, 0.25);
+  will-change: transform;
+}
+
+/* ── Panels ─────────────────────────────────────────────── */
+.tsv__panel {
+  position: absolute;
+  /* Fixed dimensions — do not alter */
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(6, 14, 27, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 10px;
+  border: 1px solid rgba(74, 158, 255, 0.18);
+  z-index: 5;
+  transition:
+    border-color 0.18s ease,
+    box-shadow   0.18s ease;
+}
+
+.tsv__panel-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Active state */
+.tsv__panel--active {
+  border-color: rgba(74, 158, 255, 0.75);
+  box-shadow:
+    0 0 12px  2px rgba(74, 158, 255, 0.22),
+    0 0 28px  6px rgba(74, 158, 255, 0.10),
+    inset 0 0 16px   rgba(74, 158, 255, 0.06);
+}
+
+.tsv__panel--active .tsv__panel-glow {
+  border-color: rgba(74, 158, 255, 0.35);
+  box-shadow: 0 0 20px 3px rgba(74, 158, 255, 0.15);
+}
+
+.tsv__panel--active .tsv__number {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(74, 158, 255, 0.6);
+}
+
+.tsv__panel--active .tsv__label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.tsv__panel--active .tsv__sub {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Panel inner layout ─────────────────────────────────── */
+.tsv__panel-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  height: 100%;
+  padding: 0 var(--space-5);
+}
+
+.tsv__number {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  min-width: 64px;
+  text-align: right;
+  flex-shrink: 0;
+  transition: color 0.18s ease, text-shadow 0.18s ease;
+}
+
+.tsv__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: var(--space-4);
+}
+
+.tsv__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  transition: color 0.18s ease;
+}
+
+.tsv__sub {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.32);
+  line-height: 1.3;
+  transition: color 0.18s ease;
+}

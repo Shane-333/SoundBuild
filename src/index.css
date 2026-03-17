@@ -11,6 +11,8 @@
 }
 
 :root {
+  --header-height: 72px;
+
   /* Display Font */
   --font-display: 'Cardinal', Georgia, 'Times New Roman', serif;
   /* Color Palette */
@@ -90,6 +92,16 @@
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
   --transition-slow: 300ms ease;
+
+  /* Premium Dark Theme */
+  --color-dark-bg: #0a1628;
+  --color-dark-surface: #0f1e35;
+  --color-dark-border: rgba(255, 255, 255, 0.1);
+  --color-dark-text: rgba(255, 255, 255, 0.9);
+  --color-dark-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+  --shadow-glow: 0 0 40px rgba(74, 158, 255, 0.15);
 }
 
 /* Reset */
@@ -257,26 +269,64 @@ a:hover {
   font-size: var(--font-size-sm);
 }
 
-/* Responsive Typography */
+/* ── Responsive System ───────────────────────────────────
+   Breakpoints: 768px (tablet), 480px (mobile), 360px (small)
+   Scale type, spacing, and container padding intentionally.
+   ───────────────────────────────────────────────────────── */
+
+/* Tablet and below (≤ 768px) */
 @media (max-width: 768px) {
   :root {
+    --font-size-6xl: 3rem;
     --font-size-5xl: 2.25rem;
     --font-size-4xl: 1.875rem;
     --font-size-3xl: 1.5rem;
+    --container-padding: var(--space-5);
   }
-  
+
   .section {
-    padding: var(--space-12) 0;
+    padding: var(--space-16) 0;
   }
-  
+
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
   .section-header h2 {
     font-size: var(--font-size-3xl);
   }
+
+  .section-header p {
+    font-size: var(--font-size-base);
+  }
 }
 
+/* Mobile (≤ 480px) */
 @media (max-width: 480px) {
   :root {
+    --font-size-6xl: 2.5rem;
+    --font-size-5xl: 2rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-3xl: 1.375rem;
+    --font-size-2xl: 1.25rem;
     --container-padding: var(--space-4);
+  }
+
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  .btn--large {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Small mobile (≤ 360px) */
+@media (max-width: 360px) {
+  :root {
+    --font-size-4xl: 1.625rem;
+    --container-padding: var(--space-3);
   }
 }
 

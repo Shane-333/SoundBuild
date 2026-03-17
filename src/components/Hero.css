@@ -1,95 +1,259 @@
+/* ─────────────────────────────────────────────────────────
+   HERO — Full-height immersive section with 3D scene layer
+   ───────────────────────────────────────────────────────── */
+
 .hero {
   position: relative;
-  padding: var(--space-24) 0 var(--space-20);
+  min-height: calc(100vh - var(--header-height));
   overflow: hidden;
-  background-color: var(--color-background);
+  background: linear-gradient(160deg, #070f1c 0%, #0a1628 35%, #0f1e35 70%, #1a2b4a 100%);
+}
+
+/* Left-side readability vignette over the 3D scene */
+.hero__text-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(7, 15, 28, 0.94) 0%,
+    rgba(7, 15, 28, 0.78) 32%,
+    rgba(7, 15, 28, 0.18) 55%,
+    transparent 75%
+  );
+}
+
+/* Container — simple block with top padding to clear the nav */
+.hero .container {
+  position: relative;
+  z-index: 3;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-16);
 }
 
 .hero__content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-12);
+  gap: 0;
   align-items: center;
 }
 
+/* ── Text column ───────────────────────────────────────── */
 .hero__text {
-  max-width: 640px;
+  max-width: 600px;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.15em;
+  color: #f59e0b;
+  margin-bottom: var(--space-5);
+  text-transform: uppercase;
 }
 
 .hero__headline {
   font-family: var(--font-display);
   font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-tight);
+  line-height: 1.1;
   margin-bottom: var(--space-6);
-  color: var(--color-primary);
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.hero__headline em {
+  font-style: italic;
+  color: var(--color-accent);
 }
 
 .hero__subheadline {
-  font-size: var(--font-size-xl);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.65);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-8);
+  max-width: 520px;
 }
 
+/* ── CTA Buttons ───────────────────────────────────────── */
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
-.hero__visual {
-  position: relative;
+.hero__btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  box-shadow: 0 4px 24px rgba(74, 158, 255, 0.28);
 }
 
-.hero__placeholder {
-  aspect-ratio: 16 / 10;
-  min-height: 320px;
+.hero__btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(74, 158, 255, 0.4);
 }
 
-.hero__image {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  object-fit: cover;
+.hero__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
 }
 
-.hero__gradient {
+.hero__btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.38);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.hero__trust-micro {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: 0.02em;
+}
+
+/* ── SVG overlay — connecting line + pulse (covers full hero) */
+.hero__connect-svg {
   position: absolute;
-  top: 0;
-  right: -20%;
-  width: 60%;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(74, 158, 255, 0.08) 0%,
-    transparent 70%
-  );
+  z-index: 4;
   pointer-events: none;
 }
 
+/* ── Corner stat bubbles ─────────────────────────────────
+   c1: Tech Domains      — top-right
+   c2: Code Ownership    — bottom-right
+   c3: Projects Delivered — bottom-left
+   ─────────────────────────────────────────────────────── */
+.hero__bubble {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 18px 14px 16px;
+  background: rgba(6, 14, 27, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 14px;
+  min-width: 128px;
+  pointer-events: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow   0.18s ease;
+}
+
+.hero__bubble--c1 { top: 48px;    right: 48px; }
+.hero__bubble--c2 { bottom: 48px; right: 48px; }
+.hero__bubble--c3 { bottom: 48px; left:  48px; }
+
+/* Active glow when pulse arrives */
+.hero__bubble--active {
+  border-color: rgba(74, 158, 255, 0.7);
+  box-shadow:
+    0 0 12px  2px rgba(74, 158, 255, 0.22),
+    0 0 28px  6px rgba(74, 158, 255, 0.10),
+    inset 0 0 16px rgba(74, 158, 255, 0.06);
+}
+
+.hero__bubble--active .hero__bubble-number {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(74, 158, 255, 0.6);
+}
+
+.hero__bubble--active .hero__bubble-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__bubble-number {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: color 0.18s ease, text-shadow 0.18s ease;
+}
+
+.hero__bubble-label {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.18s ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────── */
+
 @media (min-width: 1024px) {
-  .hero {
-    padding: var(--space-32) 0 var(--space-24);
-  }
-
-  .hero__content {
-    grid-template-columns: 1fr 1.1fr;
-    gap: var(--space-16);
-  }
-
   .hero__headline {
     font-size: var(--font-size-6xl);
   }
+}
 
-  .hero__placeholder {
-    min-height: 400px;
+@media (min-width: 1280px) {
+  .hero__headline {
+    font-size: 4rem;
   }
 }
 
+/* Tablet: strengthen vignette so text is always readable */
+@media (max-width: 1023px) and (min-width: 641px) {
+  .hero__text-vignette {
+    background: linear-gradient(
+      160deg,
+      rgba(7, 15, 28, 0.95) 0%,
+      rgba(7, 15, 28, 0.80) 55%,
+      rgba(7, 15, 28, 0.55) 100%
+    );
+  }
+
+  .hero__text {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Push content up so it clears the bottom bubbles */
+  .hero .container {
+    padding-bottom: 110px;
+  }
+
+  .hero__bubble--c2 { bottom: 24px; right: 24px; }
+  .hero__bubble--c3 { bottom: 24px; left: 24px; }
+}
+
+/* Hide top-right bubble only on mobile where it crowds the headline */
+@media (max-width: 639px) {
+  .hero__bubble--c1 { display: none; }
+}
+
 @media (max-width: 640px) {
-  .hero {
-    padding: var(--space-16) 0 var(--space-12);
+  .hero .container {
+    padding-top: var(--space-10);
+    padding-bottom: 90px; /* only one bubble visible — less clearance needed */
   }
 
   .hero__headline {
@@ -97,20 +261,31 @@
   }
 
   .hero__subheadline {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
   }
 
   .hero__actions {
     flex-direction: column;
   }
 
-  .hero__actions .btn {
+  .hero__actions .btn,
+  .hero__btn-ghost {
     width: 100%;
-    text-align: center;
+    justify-content: center;
   }
 
-  .hero__placeholder {
-    min-height: 240px;
+  .hero__text-vignette {
+    background: rgba(7, 15, 28, 0.6);
   }
+
+  /* Mobile: only show bottom-right bubble */
+  .hero__bubble--c3 { display: none; }
+  .hero__bubble--c2 { min-width: 110px; padding: 10px 14px; }
+  .hero__bubble--c2 .hero__bubble-number { font-size: var(--font-size-xl); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene-wrapper canvas {
+    display: none;
+  }
+}

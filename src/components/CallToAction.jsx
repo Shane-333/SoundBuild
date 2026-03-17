@@ -1,22 +1,30 @@
 import './CallToAction.css'
+import { Calendar, ArrowRight } from 'lucide-react'
 
-function CallToAction() {
+function CallToAction({ onOpenIntake }) {
   return (
-    <section className="section cta" id="demo">
+    <section className="section cta">
       <div className="container container--narrow">
         <div className="cta__content">
+          <span className="cta__eyebrow">READY TO BUILD?</span>
           <h2 className="cta__headline">
-            Ready to get started?
+            Your project deserves software built for it — not configured around it.
           </h2>
           <p className="cta__subheadline">
-            Experience the structure, clarity, and professionalism
-            that defines every engagement with our team.
+            If you have a problem that generic software can't solve, a product idea that needs real engineering, or a process that's breaking under manual load — let's talk. We'll give you an honest assessment and a clear path forward.
           </p>
-          <a href="https://form.typeform.com/to/HxFO5ddY" className="btn btn--primary btn--large cta__button" target="_blank" rel="noopener noreferrer">
-            Get Started
-          </a>
+          <div className="cta__actions">
+            <button className="btn btn--primary btn--large cta__button" onClick={onOpenIntake}>
+              <Calendar size={18} strokeWidth={2} />
+              Apply to Work With Us
+            </button>
+            <a href="mailto:hello@sofbld.com" className="btn btn--secondary btn--large cta__button">
+              Get a Project Estimate
+              <ArrowRight size={18} strokeWidth={2} />
+            </a>
+          </div>
           <p className="cta__reassurance">
-            No obligation. We're here when you're ready.
+            30–45 minute call. No hard sell. Just an honest conversation about whether custom software is the right answer.
           </p>
         </div>
       </div>
@@ -25,4 +33,3 @@ function CallToAction() {
 }
 
 export default CallToAction
-

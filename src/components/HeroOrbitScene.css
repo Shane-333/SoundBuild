@@ -1,0 +1,23 @@
+.hero-scene-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-scene-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Fallback gradient shown on reduced-motion or when canvas hasn't loaded */
+.hero-scene-fallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 70% at 70% 50%,
+    rgba(74, 158, 255, 0.18) 0%,
+    transparent 65%
+  );
+}

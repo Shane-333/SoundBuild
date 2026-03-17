@@ -1,63 +1,75 @@
 import './ConsultingUseCases.css'
-import intakeImage from '../assets/Intake.jpg'
-import collabImage from '../assets/Collab.jpg'
-import deliveryImage from '../assets/Delivery.jpg'
-import engagementImage from '../assets/Engagement.jpg'
+import { Monitor, Smartphone, Brain, Wrench, BarChart2 } from 'lucide-react'
 
-const useCases = [
+const services = [
   {
-    title: 'Intake',
-    outcome: 'Your journey begins here. We set expectations, gather the information we need, and ensure you feel confident about what comes next.',
-    image: intakeImage
+    icon: Monitor,
+    title: 'Web App Development',
+    description: 'Custom SaaS platforms, client portals, admin dashboards, marketplaces, and workflow applications. We build for scale from day one.',
+    problems: ['Spreadsheets breaking operations', 'Manual processes slowing delivery', 'Generic software that doesn\'t fit your workflow'],
+    accent: '#4a9eff'
   },
   {
-    title: 'Collaboration',
-    outcome: 'We work alongside you to solve problems, share insights, and build momentum. Your input shapes the work at every step.',
-    image: collabImage
+    icon: Smartphone,
+    title: 'Mobile App Development',
+    description: 'iOS and Android applications built with Flutter or React Native for cross-platform reliability. Customer-facing apps, booking systems, field service, and staff tools.',
+    problems: ['Need a customer mobile experience', 'Employee workflow requires mobile access', 'Cross-platform deployment on a single codebase'],
+    accent: '#8b5cf6'
   },
   {
-    title: 'Delivery',
-    outcome: 'When the work is ready, approvals are collected, documents are finalized, and milestones are marked complete—seamlessly.',
-    image: deliveryImage
+    icon: Brain,
+    title: 'AI Solutions',
+    description: 'AI chatbots, internal knowledge assistants, support automation, lead qualification systems, and AI-enabled workflows embedded directly into your products.',
+    problems: ['Repetitive labor consuming team capacity', 'Slow response times hurting experience', 'Need AI embedded in your actual workflow, not a gimmick'],
+    accent: '#10b981'
   },
   {
-    title: 'Ongoing Engagement',
-    outcome: 'The relationship does not end at delivery. Whether it is quarterly check-ins, follow-up projects, or simply staying connected—we are here.',
-    image: engagementImage
+    icon: Wrench,
+    title: 'Internal Tools & Automation',
+    description: 'Custom internal platforms that eliminate manual coordination. Operations tools, approval workflows, reporting systems, and integrations between your business systems.',
+    problems: ['Teams relying on disconnected tools', 'No single source of operational truth', 'Processes that generic software can\'t handle'],
+    accent: '#f59e0b'
+  },
+  {
+    icon: BarChart2,
+    title: 'Quant & Fintech Engineering',
+    description: 'Specialized market dashboards, backtesting systems, broker integrations, analytics tools, portfolio platforms, and research interfaces for trading and finance teams.',
+    problems: ['Off-the-shelf tools lack required domain depth', 'Custom data pipelines and market integrations needed', 'Compliance and reliability requirements exceed generic software'],
+    accent: '#ef4444'
   }
 ]
 
 function ConsultingUseCases() {
   return (
-    <section className="section use-cases">
+    <section className="section services" id="services">
       <div className="container">
         <div className="section-header">
-          <h2>One Unified Client Journey</h2>
+          <h2>What We Build</h2>
           <p>
-            Every client relationship follows a natural rhythm. We bring that rhythm into focus, connecting each phase into a single, coherent experience.
+            We take on projects where the right solution is custom software — not a template, not a plugin, not a generic platform configured to fit.
           </p>
         </div>
-        <div className="use-cases__list">
-          {useCases.map((useCase, index) => (
-            <div 
-              className={`use-case ${index % 2 === 1 ? 'use-case--reversed' : ''}`} 
-              key={index}
-            >
-              <div className="use-case__content">
-                <h3 className="use-case__title">{useCase.title}</h3>
-                <p className="use-case__outcome">{useCase.outcome}</p>
+        <div className="services__grid">
+          {services.map((service, index) => {
+            const IconComponent = service.icon
+            return (
+              <div className="service-card" key={index}>
+                <div className="service-card__icon" style={{ color: service.accent }} aria-hidden="true">
+                  <IconComponent size={28} strokeWidth={1.5} />
+                </div>
+                <h3 className="service-card__title">{service.title}</h3>
+                <p className="service-card__description">{service.description}</p>
+                <div className="service-card__problems">
+                  <span className="service-card__problems-label">Common triggers:</span>
+                  <ul className="service-card__problem-list">
+                    {service.problems.map((problem, i) => (
+                      <li key={i}>{problem}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="use-case__visual">
-                {useCase.image ? (
-                  <img src={useCase.image} alt={useCase.title} className="use-case__image" />
-                ) : (
-                  <div className="placeholder-visual use-case__placeholder">
-                    <span>{useCase.visual}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
@@ -65,4 +77,3 @@ function ConsultingUseCases() {
 }
 
 export default ConsultingUseCases
-

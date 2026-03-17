@@ -1,0 +1,187 @@
+.pricing {
+  background: var(--color-background-alt);
+}
+
+/* ── Sprint row (3 equal columns) ──────────────────────── */
+.pricing__sprint-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Build + Support row (2 columns, 2:1 ratio) ─────────── */
+.pricing__build-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+/* ── Card base ──────────────────────────────────────────── */
+.pricing-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition-slow);
+}
+
+.pricing-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-card--featured {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-lg);
+}
+
+/* ── Badge ──────────────────────────────────────────────── */
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  left: var(--space-8);
+  background: var(--color-accent);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.pricing-card__header {
+  margin-bottom: var(--space-4);
+}
+
+.pricing-card__name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.pricing-card__for {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  line-height: var(--line-height-normal);
+}
+
+/* ── Pricing ─────────────────────────────────────────────── */
+.pricing-card__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.pricing-card__amount {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.pricing-card__duration {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* ── Description ─────────────────────────────────────────── */
+.pricing-card__description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Features ────────────────────────────────────────────── */
+.pricing-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-8);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.pricing-card__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.pricing-card__check {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.pricing-card__cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* ── Footer note ─────────────────────────────────────────── */
+.pricing__footer-note {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  line-height: var(--line-height-relaxed);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing__footer-link {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.pricing__footer-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .pricing-card {
+    padding: var(--space-6);
+  }
+}
+
+@media (min-width: 640px) {
+  .pricing__sprint-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pricing__sprint-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pricing__build-row {
+    grid-template-columns: 2fr 1fr;
+  }
+}

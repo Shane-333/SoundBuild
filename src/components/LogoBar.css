@@ -1,0 +1,41 @@
+.logo-bar {
+  padding: var(--space-8) 0;
+  background: var(--color-background-alt);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.logo-bar__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  text-align: center;
+  margin-bottom: var(--space-5);
+  font-weight: var(--font-weight-medium);
+}
+
+.logo-bar__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-6);
+}
+
+.logo-bar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+}
+
+.logo-bar__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.logo-bar__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
